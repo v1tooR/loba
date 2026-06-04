@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOBA — Vistoria Técnica e Laudos Imobiliários | Taubaté e Vale do Paraíba</title>
+  <meta name="description" content="Vistorias técnicas, laudos imobiliários e manutenção premium para imóveis de alto padrão em Taubaté e Vale do Paraíba. Segurança técnica para cada decisão imobiliária.">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logoloba.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logoloba.png">
+  <link rel="apple-touch-icon" href="assets/logoloba.png">
+
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --black:       #070707;
+      --dark-1:      #0d0d0d;
+      --dark-2:      #131313;
+      --dark-3:      #1a1a1a;
+      --dark-4:      #222222;
+      --surface:     #1e1e1e;
+
+      --gold-light:  #e5cc84;
+      --gold:        #c9a447;
+      --gold-dark:   #9e7e2e;
+      --gold-muted:  #6b531a;
+
+      --cream:       #f0ead6;
+      --off-white:   #e2dbc9;
+      --text-1:      #d4cdbf;
+      --text-2:      #8e8679;
+      --text-3:      #52493e;
+
+      --border:      rgba(201,164,71,.14);
+      --border-s:    rgba(201,164,71,.07);
+
+      --serif:  'Instrument Serif', Georgia, serif;
+      --sans:   'Manrope', sans-serif;
+
+      --ease:   cubic-bezier(.25,.46,.45,.94);
+      --t:      .35s;
+      --tf:     .2s;
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--text-1);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    img   { display: block; max-width: 100%; height: auto; }
+    a     { text-decoration: none; color: inherit; }
+    ul    { list-style: none; }
+
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+    .section { padding: clamp(5rem, 10vw, 8rem) 0; }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .72s var(--ease), transform .72s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+    .d4 { transition-delay: .40s; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .label {
+      font-size: .6875rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .gold-line {
+      width: 44px; height: 1px;
+      background: var(--gold);
+      margin: 1.25rem 0;
+    }
+    .gold-line-c { margin: 1.25rem auto; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      font-family: var(--sans);
+      font-size: .8125rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all var(--tf) var(--ease);
+    }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2rem;
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(201,164,71,.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--off-white);
+      padding: 1rem 2rem;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .75rem;
+      letter-spacing: .15em;
+    }
+    .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 1.25rem 0;
+      transition: background .5s, backdrop-filter .5s, border-color .5s, padding .3s;
+      border-bottom: 1px solid transparent;
+    }
+    .header.scrolled {
+      background: rgba(7,7,7,.88);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom-color: var(--border);
+      padding: .875rem 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: .75rem; }
+    .logo-img {
+      height: 58px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .logo-img-sm {
+      height: 46px;
+    }
+
+    /* Nav */
+    .nav { display: flex; align-items: center; gap: 2.25rem; }
+    .nav a {
+      font-size: .8rem;
+      font-weight: 400;
+      color: var(--text-2);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color var(--tf);
+      position: relative;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--tf) var(--ease);
+    }
+    .nav a:hover { color: var(--gold-light); }
+    .nav a:hover::after { width: 100%; }
+    .nav-btn {
+      font-size: .75rem !important;
+      font-weight: 500 !important;
+      color: var(--black) !important;
+      background: var(--gold);
+      padding: .575rem 1.125rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: background var(--tf) !important;
+    }
+    .nav-btn::after { display: none !important; }
+    .nav-btn:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 23px; height: 1.5px;
+      background: var(--cream);
+      transition: all .3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mob-menu {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 82%; max-width: 340px;
+      height: 100vh;
+      background: var(--dark-2);
+      border-left: 1px solid var(--border);
+      z-index: 899;
+      padding: 5.5rem 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: right .42s var(--ease);
+    }
+    .mob-menu.open { right: 0; }
+    .mob-menu a {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--off-white);
+      border-bottom: 1px solid var(--border);
+      padding: 1.125rem 0;
+      transition: color var(--tf);
+    }
+    .mob-menu a:hover { color: var(--gold); }
+    .mob-cta { margin-top: 2rem; }
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 898;
+      opacity: 0; pointer-events: none;
+      transition: opacity .4s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: clamp(600px, 90vh, 800px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 4.5rem;
+    }
+
+    /* subtle grid pattern background */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,164,71,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,164,71,.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      padding: clamp(3.5rem,8vw,9rem) 0;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-h1 {
+      font-size: clamp(3rem,5.5vw,5.25rem);
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: clamp(.9375rem,1.4vw,1.0625rem);
+      color: var(--text-2);
+      max-width: 420px;
+      line-height: 1.72;
+      margin-bottom: 2.25rem;
+    }
+    .hero-ctas {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap; margin-bottom: 1.75rem;
+    }
+    .hero-proof {
+      display: flex; align-items: center; gap: .625rem;
+      font-size: .6875rem;
+      color: var(--text-3);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .hero-proof::before, .hero-proof::after {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--border);
+    }
+
+    /* Hero image column */
+    .hero-img-col {
+      position: relative;
+      height: clamp(528px, calc(90vh - 4.5rem), 728px);
+      min-height: 528px;
+      overflow: hidden;
+    }
+    .hero-img-col::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--black) 0%, rgba(7,7,7,.2) 45%, transparent 65%);
+      z-index: 1;
+    }
+    .hero-img-col::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(7,7,7,.25) 0%, transparent 18%, transparent 80%, var(--black) 100%);
+      z-index: 1;
+    }
+    /*
+      AI IMAGE PROMPT — Hero:
+      "Fotografia realista premium de uma profissional técnica brasileira avaliando
+      um apartamento de alto padrão, segurando tablet e checklist, luz natural
+      entrando por janelas amplas, decoração sofisticada, atmosfera de confiança,
+      estilo editorial, alta resolução, sem texto na imagem."
+      → Substitua o src abaixo pela imagem gerada.
+    */
+    .hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 2.75rem; left: 2rem;
+      z-index: 2;
+      background: rgba(13,13,13,.88);
+      border: 1px solid var(--border);
+      padding: 1rem 1.375rem;
+      backdrop-filter: blur(12px);
+    }
+    .hero-badge-lbl { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: .2rem; }
+    .hero-badge-val { font-family: var(--serif); font-size: 1.125rem; color: var(--cream); }
+
+    /* ============================================================
+       PROBLEMA
+    ============================================================ */
+    #problema {
+      background: var(--dark-1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .problema-lead { max-width: 620px; margin-bottom: clamp(3rem,5vw,4.5rem); }
+    .problema-q {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem,2.8vw,2.375rem);
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 1.125rem;
+    }
+    .problema-q em { color: var(--gold); font-style: italic; }
+    .problema-desc { color: var(--text-2); line-height: 1.72; }
+
+    .problema-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5px;
+      background: var(--border);
+    }
+    .problema-card {
+      background: var(--dark-2);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--tf);
+    }
+    .problema-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--t) var(--ease);
+    }
+    .problema-card:hover { background: var(--dark-3); }
+    .problema-card:hover::before { transform: scaleX(1); }
+    .problema-num {
+      font-family: var(--serif);
+      font-size: 2.75rem;
+      color: var(--gold-muted);
+      opacity: .45;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .problema-card h3 { font-size: 1.0625rem; color: var(--off-white); margin-bottom: .75rem; }
+    .problema-card p  { font-size: .9125rem; color: var(--text-2); line-height: 1.68; }
+
+    /* ============================================================
+       SERVIÇOS
+    ============================================================ */
+    #servicos { background: var(--black); }
+
+    .servicos-hd {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: clamp(3rem,5vw,4.5rem);
+    }
+    .servicos-hd-desc { color: var(--text-2); font-size: 1rem; line-height: 1.72; }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .servico-card {
+      background: var(--dark-1);
+      overflow: hidden;
+      transition: background var(--tf);
+    }
+    .servico-card:hover { background: var(--dark-2); }
+
+    .servico-img-wrap {
+      position: relative;
+      height: 252px;
+      overflow: hidden;
+    }
+    .servico-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 45%, rgba(13,13,13,.82) 100%);
+    }
+    .servico-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .72s ease;
+    }
+    .servico-card:hover .servico-img { transform: scale(1.05); }
+
+    .servico-body { padding: 2rem; }
+    .servico-icon {
+      width: 38px; height: 38px;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      margin-bottom: 1.125rem;
+    }
+    .servico-body h3 { font-size: 1.1875rem; color: var(--cream); margin-bottom: .625rem; }
+    .servico-body p  { font-size: .8875rem; color: var(--text-2); line-height: 1.68; margin-bottom: 1.375rem; }
+
+    .servico-feats { margin-bottom: 1.625rem; }
+    .servico-feats li {
+      font-size: .8rem;
+      color: var(--text-3);
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--border-s);
+      display: flex; align-items: center; gap: .625rem;
+    }
+    .servico-feats li::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       NÚMEROS
+    ============================================================ */
+    #numeros {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .numeros-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .num-item {
+      background: var(--dark-2);
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    .num-val {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem,4.5vw,3.75rem);
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: .625rem;
+    }
+    .num-div {
+      width: 22px; height: 1px;
+      background: var(--gold-muted);
+      margin: .75rem auto;
+    }
+    .num-lbl {
+      font-size: .775rem;
+      color: var(--text-2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       DIFERENCIAIS
+    ============================================================ */
+    #diferenciais { background: var(--black); }
+    .dif-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,6rem);
+      align-items: center;
+    }
+    .dif-h2 { color: var(--cream); margin-bottom: 1rem; }
+    .dif-h2 em { display: block; color: var(--gold); font-style: italic; }
+    .dif-desc { color: var(--text-2); line-height: 1.72; margin-bottom: 2.25rem; }
+
+    .dif-item {
+      display: flex; align-items: flex-start;
+      gap: 1.125rem;
+      padding: 1.375rem 0;
+      border-bottom: 1px solid var(--border-s);
+    }
+    .dif-item:last-child { border-bottom: none; }
+    .dif-ico {
+      width: 34px; min-width: 34px; height: 34px;
+      background: rgba(201,164,71,.06);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .dif-txt h4 {
+      font-family: var(--sans);
+      font-size: .9375rem; font-weight: 500;
+      color: var(--off-white);
+      margin-bottom: .3rem;
+    }
+    .dif-txt p { font-size: .85rem; color: var(--text-2); line-height: 1.62; }
+
+    /* Image side */
+    .dif-img-wrap {
+      position: relative;
+    }
+    .dif-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1.75rem; right: -1.75rem;
+      width: 55%; height: 55%;
+      border: 1px solid var(--border);
+      z-index: 0;
+    }
+    .dif-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -1.75rem; left: -1.75rem;
+      width: 55%; height: 55%;
+      border: 1px solid var(--border);
+      z-index: 0;
+    }
+    /*
+      AI IMAGE PROMPT — Especialista / Diferenciais:
+      "Retrato editorial realista de profissional técnica brasileira em ambiente
+      de imóvel premium, postura confiante, tablet em mãos, iluminação natural,
+      estilo sofisticado, sem texto."
+      → Substitua o src abaixo pela imagem gerada.
+    */
+    .dif-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      position: relative; z-index: 1;
+    }
+    .dif-quote {
+      position: absolute;
+      bottom: 2rem; left: -2.75rem;
+      z-index: 2;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 1.375rem;
+      max-width: 264px;
+    }
+    .dif-quote p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .9375rem;
+      color: var(--off-white);
+      line-height: 1.5;
+    }
+    .dif-quote cite {
+      font-style: normal;
+      font-size: .7rem;
+      color: var(--gold);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: .625rem;
+    }
+
+    /* ============================================================
+       DEPOIMENTOS
+    ============================================================ */
+    #depoimentos {
+      background: var(--dark-1);
+      border-top: 1px solid var(--border);
+    }
+    .dep-hd { text-align: center; margin-bottom: clamp(3rem,5vw,4rem); }
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5px;
+      background: var(--border);
+    }
+    .dep-card {
+      background: var(--dark-2);
+      padding: 2.125rem;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--tf);
+    }
+    .dep-card:hover { background: var(--dark-3); }
+    .dep-qmark {
+      position: absolute;
+      top: 1.25rem; right: 1.375rem;
+      font-family: var(--serif);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: .055;
+      line-height: 1;
+    }
+    .dep-stars { color: var(--gold); font-size: .75rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .dep-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .9375rem;
+      color: var(--text-1);
+      line-height: 1.7;
+      margin-bottom: 1.625rem;
+    }
+    .dep-author {
+      display: flex; align-items: center; gap: .875rem;
+      padding-top: 1.125rem;
+      border-top: 1px solid var(--border);
+    }
+    .dep-av {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--dark-4);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: .9375rem;
+      flex-shrink: 0;
+    }
+    .dep-name { font-size: .875rem; font-weight: 500; color: var(--off-white); }
+    .dep-role { font-size: .75rem; color: var(--text-3); }
+
+    /* ============================================================
+       REGIÕES
+    ============================================================ */
+    #regioes {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+    .reg-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,6rem);
+      align-items: center;
+    }
+    .reg-h2 { color: var(--cream); margin-bottom: .875rem; }
+    .reg-desc { color: var(--text-2); line-height: 1.72; margin-bottom: 2.25rem; }
+    .reg-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+    .reg-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .8rem; color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: .475rem .95rem;
+      letter-spacing: .05em;
+      cursor: default;
+      transition: all var(--tf) var(--ease);
+    }
+    .reg-tag::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+    .reg-tag:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201,164,71,.05); }
+    .reg-tag-sp { border-color: var(--gold-muted); color: var(--gold); font-style: italic; }
+
+    /*
+      AI IMAGE PROMPT — Região / Vale do Paraíba:
+      "Vista editorial realista de cidade do Vale do Paraíba com arquitetura
+      urbana elegante, montanhas suaves ao fundo, luz de fim de tarde,
+      atmosfera premium, sem texto."
+      → Substitua o src abaixo pela imagem gerada.
+    */
+    .reg-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .reg-cap {
+      background: rgba(13,13,13,.92);
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: .875rem 1.375rem;
+      font-size: .7875rem;
+      color: var(--text-2);
+      letter-spacing: .05em;
+    }
+    .reg-cap strong { color: var(--gold); font-weight: 500; }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    #contato {
+      background: var(--dark-1);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-inner { max-width: 660px; margin: 0 auto; }
+    .cta-h2 { color: var(--cream); margin-bottom: 1.125rem; font-size: clamp(1.875rem,3.5vw,3.125rem); }
+    .cta-h2 em { color: var(--gold); font-style: italic; }
+    .cta-desc { color: var(--text-2); line-height: 1.72; margin-bottom: 2.25rem; font-size: 1.0625rem; }
+    .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+    .cta-info { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+    .cta-info-item {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .875rem; color: var(--text-2);
+    }
+    .cta-info-item svg { color: var(--gold); width: 14px; height: 14px; flex-shrink: 0; }
+    .cta-promise {
+      margin-top: 2.25rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      font-size: .775rem;
+      color: var(--text-3);
+      letter-spacing: .1em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .footer-desc { font-size: .875rem; color: var(--text-2); line-height: 1.72; max-width: 280px; margin-top: 1.125rem; }
+    .footer-col h4 {
+      font-family: var(--sans);
+      font-size: .6875rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.125rem;
+    }
+    .footer-col li { margin-bottom: .5rem; }
+    .footer-col a { font-size: .875rem; color: var(--text-2); transition: color var(--tf); }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: .75rem;
+    }
+    .footer-copy { font-size: .75rem; color: var(--text-3); letter-spacing: .05em; }
+    .footer-loc {
+      font-size: .75rem; color: var(--text-3);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .footer-loc::before { content: '◆'; color: var(--gold); font-size: .4rem; }
+
+    /* ============================================================
+       COOKIE BANNER
+    ============================================================ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      padding: 1.125rem clamp(1.25rem, 4vw, 3rem);
+      z-index: 9998;
+      transform: translateY(110%);
+      transition: transform .55s var(--ease);
+      box-shadow: 0 -8px 40px rgba(0,0,0,.55);
+    }
+    .cookie-banner.cb-visible { transform: translateY(0); }
+    .cookie-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cookie-text { flex: 1; min-width: 220px; }
+    .cookie-text p { font-size: .8125rem; color: var(--text-2); line-height: 1.55; }
+    .cookie-text a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; transition: color var(--tf); }
+    .cookie-text a:hover { color: var(--gold-light); }
+    .cookie-actions { display: flex; gap: .625rem; flex-shrink: 0; }
+    .btn-cookie-refuse {
+      display: inline-flex; align-items: center;
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .6rem 1.1rem;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text-2); cursor: pointer;
+      transition: all var(--tf) var(--ease);
+    }
+    .btn-cookie-refuse:hover { border-color: var(--text-2); color: var(--text-1); }
+    .btn-cookie-accept {
+      display: inline-flex; align-items: center;
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .6rem 1.25rem;
+      background: var(--gold); color: var(--black);
+      border: 1px solid var(--gold); cursor: pointer;
+      transition: all var(--tf) var(--ease);
+    }
+    .btn-cookie-accept:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    @media (max-width: 480px) {
+      .cookie-actions { width: 100%; }
+      .btn-cookie-refuse, .btn-cookie-accept { flex: 1; justify-content: center; }
+    }
+
+    /* ============================================================
+       WHATSAPP FLOAT
+    ============================================================ */
+    .wa-float {
+      position: fixed;
+      bottom: 1.875rem; right: 1.875rem;
+      z-index: 500;
+      display: flex; align-items: center; gap: .75rem;
+      background: #0e1f0e;
+      border: 1px solid rgba(37,211,102,.28);
+      color: #25d366;
+      padding: .875rem 1.25rem;
+      font-size: .8rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      transition: all var(--tf) var(--ease);
+      box-shadow: 0 8px 32px rgba(0,0,0,.45);
+    }
+    .wa-float:hover {
+      background: #25d366;
+      color: #fff;
+      border-color: #25d366;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(37,211,102,.28);
+    }
+    .wa-float svg { width: 19px; height: 19px; flex-shrink: 0; }
+    .wa-mob { display: none; }
+    .wa-desk { display: block; }
+
+    /* ============================================================
+       FOCUS
+    ============================================================ */
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+
+    /* Viewports baixos (ex: 1280×800, MacBook Air 13") — compacta hero-content */
+    @media (max-height: 840px) and (min-width: 1061px) {
+      .hero-content {
+        padding: clamp(.75rem, 2.5vh, 2rem) 0;
+      }
+      .hero-h1 {
+        font-size: clamp(2.25rem, 4vw, 3.625rem);
+        margin-bottom: .875rem;
+      }
+      .hero-sub {
+        font-size: .9375rem;
+        margin-bottom: 1.375rem;
+      }
+      .hero-ctas { margin-bottom: 1rem; }
+      .hero-proof { font-size: .625rem; }
+    }
+
+    @media (max-width: 1060px) {
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+      .hero-img-col {
+        height: 56vh;
+        min-height: 380px;
+        order: -1;
+      }
+      .hero-img-col::before {
+        background: linear-gradient(to bottom, var(--black) 0%, transparent 30%);
+      }
+      .hero-content { padding-top: 2rem; padding-bottom: 3rem; }
+      .servicos-hd { grid-template-columns: 1fr; }
+      .dif-inner   { grid-template-columns: 1fr; }
+      .reg-inner   { grid-template-columns: 1fr; }
+      .dif-quote   { position: relative; left: 0; bottom: 0; max-width: 100%; margin-top: 1px; }
+      .dif-img-wrap::before, .dif-img-wrap::after { display: none; }
+      .numeros-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid  { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .problema-grid { grid-template-columns: 1fr; }
+      .servicos-grid  { grid-template-columns: 1fr; }
+      .dep-grid       { grid-template-columns: 1fr; }
+      .footer-grid    { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom  { flex-direction: column; text-align: center; }
+      .cta-btns       { flex-direction: column; align-items: center; }
+      .wa-desk { display: none; }
+      .wa-mob  { display: block; }
+      .wa-float { padding: .875rem; bottom: 1.5rem; right: 1.5rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-badge { display: none; }
+      .numeros-grid { grid-template-columns: repeat(2,1fr); }
+      .cta-info { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ============================================= -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="#" class="logo" aria-label="LOBA — Voltar ao topo">
+          <img src="assets/logoloba.png" alt="LOBA" class="logo-img">
+        </a>
+
+        <nav class="nav" aria-label="Menu principal">
+          <a href="#servicos">Serviços</a>
+          <a href="#diferenciais">Diferenciais</a>
+          <a href="#regioes">Regiões</a>
+          <a href="#contato">Contato</a>
+          <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+          <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação."
+             class="nav-btn" target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+
+        <button class="hamburger" id="ham" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <nav class="mob-menu" id="mobMenu" aria-label="Menu mobile">
+    <a href="#servicos"      class="mn">Serviços</a>
+    <a href="#diferenciais"  class="mn">Diferenciais</a>
+    <a href="#regioes"       class="mn">Regiões</a>
+    <a href="#contato"       class="mn">Contato</a>
+    <div class="mob-cta">
+      <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+      <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação."
+         class="btn btn-gold" style="width:100%;justify-content:center;"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        Solicitar avaliação
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ===== HERO =============================================== -->
+  <section id="hero">
+
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="hero-content">
+
+        <div class="hero-eyebrow reveal">
+          <span class="label">Taubaté · Vale do Paraíba</span>
+        </div>
+
+        <h1 class="hero-h1 reveal d1">
+          Segurança técnica<br>
+          para imóveis de<br>
+          <em>alto padrão</em>
+        </h1>
+
+        <p class="hero-sub reveal d2">
+          A LOBA oferece vistorias detalhadas, laudos técnicos precisos e manutenção
+          premium para quem não aceita riscos em decisões imobiliárias.
+          Atendemos Taubaté, Vale do Paraíba e região com rigor, clareza e cuidado.
+        </p>
+
+        <div class="hero-ctas reveal d3">
+          <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+          <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação%20técnica."
+             class="btn btn-gold" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+            Solicitar avaliação pelo WhatsApp
+          </a>
+          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+        </div>
+
+        <div class="hero-proof reveal d4">
+          Vistoria &nbsp;·&nbsp; Laudos &nbsp;·&nbsp; Manutenção premium
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Hero image -->
+    <div class="hero-img-col">
+      <img
+        src="assets/foto1.png"
+        alt="Imóvel de alto padrão — LOBA"
+        class="hero-img"
+        loading="eager"
+        fetchpriority="high"
+      >
+      <div class="hero-badge">
+        <div class="hero-badge-lbl">Baseada em</div>
+        <!-- EDITÁVEL: Ajuste conforme informações reais -->
+        <div class="hero-badge-val">Taubaté, SP</div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ===== PROBLEMA =========================================== -->
+  <section id="problema" class="section">
+    <div class="container">
+
+      <div class="problema-lead">
+        <span class="label reveal">O que está em risco</span>
+        <div class="gold-line reveal d1"></div>
+        <h2 class="problema-q reveal d1">
+          Você já assinou um contrato sem realmente<br>saber o que estava <em>aceitando?</em>
+        </h2>
+        <p class="problema-desc reveal d2">
+          Decisões imobiliárias envolvem valores altos, responsabilidades legais e riscos
+          que muitas vezes só aparecem depois — quando já é tarde demais.
+          A falta de documentação técnica rigorosa custa caro.
+        </p>
+      </div>
+
+      <div class="problema-grid">
+
+        <div class="problema-card reveal">
+          <div class="problema-num">01</div>
+          <h3>Vistorias superficiais geram prejuízos</h3>
+          <p>Um checklist genérico não detecta infiltrações ocultas, falhas elétricas
+          ou problemas estruturais que aparecem meses depois. O dano cresce —
+          e a discussão sobre responsabilidade, também.</p>
+        </div>
+
+        <div class="problema-card reveal d1">
+          <div class="problema-num">02</div>
+          <h3>Falhas ocultas viram conflitos</h3>
+          <p>Quando o laudo técnico não é claro, preciso e documentado, qualquer dano
+          preexistente vira disputa — entre locador e locatário, comprador e vendedor.
+          Quem parecia protegido fica vulnerável.</p>
+        </div>
+
+        <div class="problema-card reveal d2">
+          <div class="problema-num">03</div>
+          <h3>Laudos mal documentados não protegem</h3>
+          <p>Em negociações e disputas legais, o que vale é o que está registrado com
+          clareza técnica. Laudos vagos, sem fotos e sem referências normativas
+          simplesmente não sustentam nenhuma posição.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== SERVIÇOS =========================================== -->
+  <section id="servicos" class="section">
+    <div class="container">
+
+      <div class="servicos-hd">
+        <div>
+          <span class="label reveal">O que fazemos</span>
+          <div class="gold-line reveal d1"></div>
+          <h2 class="reveal d1" style="color:var(--cream);font-size:clamp(1.75rem,3vw,2.5rem);">
+            Três serviços.<br>Um único nível de exigência.
+          </h2>
+        </div>
+        <p class="servicos-hd-desc reveal d2">
+          Cada serviço da LOBA é executado com metodologia própria, documentação rigorosa
+          e o mesmo olhar técnico que distingue um trabalho comum de um trabalho de referência.
+        </p>
+      </div>
+
+      <div class="servicos-grid">
+
+        <!-- Vistoria Técnica -->
+        <div class="servico-card reveal">
+          <div class="servico-img-wrap">
+            <!--
+              AI IMAGE PROMPT — Vistoria Técnica:
+              "Profissional fazendo vistoria detalhada em imóvel residencial de luxo,
+              analisando paredes, acabamentos e instalações, ambiente moderno, luz natural,
+              fotografia realista premium, sem texto."
+              → Substitua o src abaixo pela imagem gerada.
+            -->
+            <img
+              src="assets/foto3.png"
+              alt="Vistoria técnica em imóvel de alto padrão"
+              class="servico-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="servico-body">
+            <div class="servico-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <h3>Vistoria Técnica</h3>
+            <p>Avaliação minuciosa do estado do imóvel, com registro fotográfico detalhado e verificação de acabamentos, instalações e conformidades. Indicada para entrada, saída, compra e locação.</p>
+            <ul class="servico-feats">
+              <li>Registro fotográfico completo</li>
+              <li>Verificação elétrica e hidráulica</li>
+              <li>Análise de acabamentos e estrutura</li>
+              <li>Relatório técnico detalhado</li>
+            </ul>
+            <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+            <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20Vistoria%20Técnica."
+               class="btn btn-ghost" target="_blank" rel="noopener">
+              Solicitar vistoria &nbsp;→
+            </a>
+          </div>
+        </div>
+
+        <!-- Laudos Imobiliários -->
+        <div class="servico-card reveal d1">
+          <div class="servico-img-wrap">
+            <!--
+              AI IMAGE PROMPT — Laudos Imobiliários:
+              "Mesa elegante com documentos técnicos imobiliários, tablet mostrando checklist,
+              caneta, planta baixa e detalhes arquitetônicos, estética premium, luz suave,
+              fotografia realista, sem texto."
+              → Substitua o src abaixo pela imagem gerada.
+            -->
+            <img
+              src="assets/foto4.png"
+              alt="Documentos técnicos e laudos imobiliários"
+              class="servico-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="servico-body">
+            <div class="servico-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <h3>Laudos Imobiliários</h3>
+            <p>Documentação técnica com validade jurídica e clareza pericial. Laudos elaborados com metodologia rigorosa, referências normativas e linguagem que protege todas as partes.</p>
+            <ul class="servico-feats">
+              <li>Validade técnico-legal</li>
+              <li>Referências ABNT e NBR</li>
+              <li>Evidências fotográficas indexadas</li>
+              <li>Linguagem clara e precisa</li>
+            </ul>
+            <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+            <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20um%20Laudo%20Imobiliário."
+               class="btn btn-ghost" target="_blank" rel="noopener">
+              Solicitar laudo &nbsp;→
+            </a>
+          </div>
+        </div>
+
+        <!-- Manutenção Premium -->
+        <div class="servico-card reveal d2">
+          <div class="servico-img-wrap">
+            <!--
+              AI IMAGE PROMPT — Manutenção Premium:
+              "Técnico realizando manutenção cuidadosa em imóvel sofisticado, ferramentas
+              organizadas, acabamento de alto padrão, ambiente limpo e elegante,
+              fotografia realista premium, sem texto."
+              → Substitua o src abaixo pela imagem gerada.
+            -->
+            <img
+              src="assets/foto2.png"
+              alt="Manutenção premium em imóvel de alto padrão"
+              class="servico-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="servico-body">
+            <div class="servico-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Manutenção Premium</h3>
+            <p>Gestão e execução de manutenções preventivas e corretivas com o nível de cuidado que imóveis de alto padrão exigem. Profissionais selecionados, materiais de qualidade.</p>
+            <ul class="servico-feats">
+              <li>Preventiva e corretiva</li>
+              <li>Profissionais especializados</li>
+              <li>Acompanhamento técnico contínuo</li>
+              <li>Relatório ao final do serviço</li>
+            </ul>
+            <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+            <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20Manutenção%20Premium."
+               class="btn btn-ghost" target="_blank" rel="noopener">
+              Solicitar manutenção &nbsp;→
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== NÚMEROS ============================================ -->
+  <section id="numeros" class="section">
+    <div class="container">
+
+      <div style="text-align:center;margin-bottom:3rem;">
+        <span class="label reveal">Em números</span>
+        <div class="gold-line gold-line-c reveal d1"></div>
+        <h2 class="reveal d1" style="color:var(--cream);font-size:clamp(1.625rem,2.8vw,2.25rem);">
+          Resultados que falam por si
+        </h2>
+      </div>
+
+      <!-- EDITÁVEL: Troque os valores em data-target pelos números reais da LOBA -->
+      <div class="numeros-grid">
+
+        <div class="num-item reveal">
+          <div class="num-val"><span class="counter" data-target="500">0</span>+</div>
+          <div class="num-div"></div>
+          <div class="num-lbl">imóveis avaliados</div>
+        </div>
+
+        <div class="num-item reveal d1">
+          <div class="num-val"><span class="counter" data-target="5">0</span>+</div>
+          <div class="num-div"></div>
+          <div class="num-lbl">anos de experiência</div>
+        </div>
+
+        <div class="num-item reveal d2">
+          <div class="num-val"><span class="counter" data-target="4">0</span></div>
+          <div class="num-div"></div>
+          <div class="num-lbl">cidades principais</div>
+        </div>
+
+        <div class="num-item reveal d3">
+          <div class="num-val"><span class="counter" data-target="100">0</span>%</div>
+          <div class="num-div"></div>
+          <div class="num-lbl">laudos documentados</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== DIFERENCIAIS ======================================= -->
+  <section id="diferenciais" class="section">
+    <div class="container">
+      <div class="dif-inner">
+
+        <!-- Content -->
+        <div>
+          <span class="label reveal">Por que a LOBA</span>
+          <div class="gold-line reveal d1"></div>
+          <h2 class="dif-h2 reveal d1" style="font-size:clamp(1.75rem,3vw,2.75rem);">
+            Não somos mais uma empresa.
+            <em>Somos a referência.</em>
+          </h2>
+          <p class="dif-desc reveal d2">
+            O mercado está cheio de opções. A LOBA se distingue pela combinação de rigor técnico,
+            documentação excepcional e um atendimento que respeita o nível do imóvel —
+            e da pessoa que o possui.
+          </p>
+
+          <ul class="dif-list">
+
+            <li class="dif-item reveal d1">
+              <div class="dif-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              </div>
+              <div class="dif-txt">
+                <h4>Olhar técnico e pericial</h4>
+                <p>Metodologia rigorosa e atenção a detalhes que uma avaliação comum simplesmente não enxerga.</p>
+              </div>
+            </li>
+
+            <li class="dif-item reveal d2">
+              <div class="dif-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div class="dif-txt">
+                <h4>Documentação detalhada</h4>
+                <p>Laudos com fotos, referências técnicas e linguagem precisa — prontos para contratos, negociações e disputas.</p>
+              </div>
+            </li>
+
+            <li class="dif-item reveal d3">
+              <div class="dif-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div class="dif-txt">
+                <h4>Atendimento premium e humano</h4>
+                <p>Comunicação clara, prazos cumpridos e presença durante todo o processo. Sem terceirizações, sem surpresas.</p>
+              </div>
+            </li>
+
+            <li class="dif-item reveal d4">
+              <div class="dif-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="dif-txt">
+                <h4>Especialistas em alto padrão</h4>
+                <p>Entendemos as particularidades de imóveis diferenciados: materiais nobres, sistemas integrados, acabamentos exclusivos.</p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Image -->
+        <div class="dif-img-wrap reveal d2">
+          <img
+            src="assets/foto5.png"
+            alt="Especialista técnica da LOBA"
+            class="dif-img"
+            loading="lazy"
+          >
+          <div class="dif-quote">
+            <p>"Cada detalhe registrado é uma camada de segurança para quem contrata."</p>
+            <cite>Equipe LOBA</cite>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== DEPOIMENTOS ======================================== -->
+  <section id="depoimentos" class="section">
+    <div class="container">
+
+      <div class="dep-hd">
+        <span class="label reveal">O que dizem sobre a LOBA</span>
+        <div class="gold-line gold-line-c reveal d1"></div>
+        <h2 class="reveal d1" style="color:var(--cream);font-size:clamp(1.625rem,2.8vw,2.25rem);">
+          Quem confiou, recomenda.
+        </h2>
+      </div>
+
+      <!-- EDITÁVEL: Substitua os depoimentos abaixo por depoimentos reais de clientes -->
+      <div class="dep-grid">
+
+        <div class="dep-card reveal">
+          <div class="dep-qmark">"</div>
+          <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-text">
+            "Contratei a LOBA para a vistoria de entrada de um apartamento que estava locando
+            em Taubaté. O laudo foi tão detalhado que, na saída do inquilino dois anos depois,
+            não houve nenhuma discussão. Tudo estava registrado."
+          </p>
+          <div class="dep-author">
+            <div class="dep-av" aria-hidden="true">M</div>
+            <div>
+              <!-- EDITÁVEL: Nome real do cliente -->
+              <div class="dep-name">Marcelo A.</div>
+              <div class="dep-role">Proprietário · Taubaté</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dep-card reveal d1">
+          <div class="dep-qmark">"</div>
+          <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-text">
+            "Usamos a LOBA em três transações este ano. A diferença em relação ao que tínhamos
+            antes é enorme: laudos técnicos de verdade, com fotos e referências. Clientes dos
+            dois lados ficam muito mais seguros."
+          </p>
+          <div class="dep-author">
+            <div class="dep-av" aria-hidden="true">C</div>
+            <div>
+              <!-- EDITÁVEL: Nome real do cliente -->
+              <div class="dep-name">Camila R.</div>
+              <div class="dep-role">Gerente Imobiliária · São José dos Campos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dep-card reveal d2">
+          <div class="dep-qmark">"</div>
+          <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-text">
+            "Antes de fechar a compra de um imóvel em Pindamonhangaba, solicitei uma avaliação
+            à LOBA. Identificaram uma infiltração que não estava visível. Renegociei o valor
+            e ainda economizei na reforma."
+          </p>
+          <div class="dep-author">
+            <div class="dep-av" aria-hidden="true">R</div>
+            <div>
+              <!-- EDITÁVEL: Nome real do cliente -->
+              <div class="dep-name">Rafael S.</div>
+              <div class="dep-role">Investidor · Vale do Paraíba</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== REGIÕES ============================================ -->
+  <section id="regioes" class="section">
+    <div class="container">
+      <div class="reg-inner">
+
+        <div>
+          <span class="label reveal">Onde atuamos</span>
+          <div class="gold-line reveal d1"></div>
+          <h2 class="reg-h2 reveal d1" style="font-size:clamp(1.75rem,3vw,2.5rem);">
+            Taubaté e toda a região do Vale do Paraíba
+          </h2>
+          <p class="reg-desc reveal d2">
+            Atendemos proprietários, imobiliárias, compradores e investidores nas principais
+            cidades da região. Para localidades não listadas, consulte disponibilidade —
+            frequentemente atendemos sob demanda.
+          </p>
+
+          <!-- EDITÁVEL: Adicione ou remova cidades conforme a cobertura real da LOBA -->
+          <div class="reg-tags reveal d2">
+            <span class="reg-tag">Taubaté</span>
+            <span class="reg-tag">Pindamonhangaba</span>
+            <span class="reg-tag">Tremembé</span>
+            <span class="reg-tag">Jacareí</span>
+            <span class="reg-tag">Guaratinguetá</span>
+            <span class="reg-tag">São José dos Campos</span>
+            <span class="reg-tag">Lorena</span>
+            <span class="reg-tag">Caçapava</span>
+            <span class="reg-tag reg-tag-sp">+ Consultar cobertura</span>
+          </div>
+
+          <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+          <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20verificar%20atendimento%20na%20minha%20cidade."
+             class="btn btn-outline reveal d3"
+             target="_blank" rel="noopener"
+             style="display:inline-flex;">
+            Verificar atendimento na minha cidade
+          </a>
+        </div>
+
+        <div class="reveal d2">
+          <img
+            src="assets/Cristo-Taubaté2-1080x675.jpg"
+            alt="Vista da região do Vale do Paraíba"
+            class="reg-img"
+            loading="lazy"
+          >
+          <div class="reg-cap">
+            <strong>Vale do Paraíba, SP</strong> — Taubaté e região
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CTA FINAL ========================================== -->
+  <section id="contato" class="section">
+    <div class="container">
+      <div class="cta-inner">
+
+        <span class="label reveal">Próximo passo</span>
+        <div class="gold-line gold-line-c reveal d1"></div>
+
+        <h2 class="cta-h2 reveal d1">
+          Pronto para garantir a segurança <em>do seu imóvel?</em>
+        </h2>
+
+        <p class="cta-desc reveal d2">
+          Entre em contato agora e solicite sua avaliação sem compromisso.
+          A LOBA analisa sua necessidade, apresenta a solução adequada e
+          você decide com toda a informação necessária.
+        </p>
+
+        <div class="cta-btns reveal d2">
+          <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+          <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação%20sem%20compromisso."
+             class="btn btn-gold"
+             target="_blank" rel="noopener"
+             style="font-size:.875rem;padding:1.125rem 2.25rem;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+            Solicitar avaliação pelo WhatsApp
+          </a>
+        </div>
+
+        <div class="cta-info reveal d3">
+          <div class="cta-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <!-- EDITÁVEL: Substitua pelo e-mail real da LOBA -->
+            <span>contato@loba.com.br</span>
+          </div>
+          <div class="cta-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Retorno em até 2 horas úteis</span>
+          </div>
+          <div class="cta-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Taubaté e Vale do Paraíba</span>
+          </div>
+        </div>
+
+        <p class="cta-promise reveal d4">
+          Orçamento sem compromisso &nbsp;·&nbsp; Atendimento personalizado &nbsp;·&nbsp; Sigilo garantido
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ============================================= -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="logo" style="pointer-events:none;">
+            <img src="assets/logoloba.png" alt="LOBA" class="logo-img logo-img-sm">
+          </div>
+          <!-- EDITÁVEL: Ajuste o texto conforme necessário -->
+          <p class="footer-desc">
+            Vistoria técnica, laudos imobiliários e manutenção de alto padrão para imóveis
+            residenciais e comerciais em Taubaté e Vale do Paraíba.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Vistoria Técnica</a></li>
+            <li><a href="#servicos">Laudos Imobiliários</a></li>
+            <li><a href="#servicos">Manutenção Premium</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#regioes">Regiões</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <!-- EDITÁVEL: Ajuste o ano e informações legais -->
+        <p class="footer-copy">© 2026 LOBA. Todos os direitos reservados.</p>
+        <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+          <a href="politica-de-privacidade.html" class="footer-copy" style="transition:color var(--tf);text-decoration:underline;text-underline-offset:3px;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color=''">Política de Privacidade</a>
+          <p class="footer-loc">Taubaté e Vale do Paraíba, SP</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ===== COOKIE BANNER ====================================== -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <p>
+          Utilizamos cookies para melhorar sua experiência de navegação.
+          Ao continuar, você concorda com nossa
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
+          e com o uso de cookies.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-refuse" class="btn-cookie-refuse">Recusar</button>
+        <button id="cookie-accept" class="btn-cookie-accept">Aceitar cookies</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== WHATSAPP FLOAT ===================================== -->
+  <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+  <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação."
+     class="wa-float"
+     target="_blank" rel="noopener"
+     aria-label="Entrar em contato pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/>
+    </svg>
+    <span class="wa-desk">WhatsApp</span>
+  </a>
+
+
+  <!-- ===== JAVASCRIPT ========================================= -->
+  <script>
+    /* ---- Header sticky ---- */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ---- Mobile menu ---- */
+    const ham     = document.getElementById('ham');
+    const mob     = document.getElementById('mobMenu');
+    const overlay = document.getElementById('overlay');
+
+    function openMenu() {
+      mob.classList.add('open');
+      ham.classList.add('open');
+      overlay.classList.add('open');
+      ham.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mob.classList.remove('open');
+      ham.classList.remove('open');
+      overlay.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    ham.addEventListener('click', () => mob.classList.contains('open') ? closeMenu() : openMenu());
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mn').forEach(l => l.addEventListener('click', closeMenu));
+
+    /* ---- Scroll reveal ---- */
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -36px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    /* ---- Animated counters ---- */
+    function runCounter(el, target, duration) {
+      const start = Date.now();
+      const update = () => {
+        const elapsed = Date.now() - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(update);
+    }
+
+    const co = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.counter').forEach(c => {
+            runCounter(c, parseInt(c.dataset.target, 10), 1800);
+          });
+          co.unobserve(e.target);
+        }
+      });
+    }, { threshold: .3 });
+
+    const numSec = document.getElementById('numeros');
+    if (numSec) co.observe(numSec);
+
+    /* ---- Smooth scroll (anchor links) ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 76, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ---- Cookie consent ---- */
+    (function () {
+      const KEY = 'loba_cookie_consent';
+      if (localStorage.getItem(KEY)) return;
+      const banner = document.getElementById('cookie-banner');
+      setTimeout(() => banner.classList.add('cb-visible'), 900);
+      document.getElementById('cookie-accept').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'accepted');
+        banner.classList.remove('cb-visible');
+      });
+      document.getElementById('cookie-refuse').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'refused');
+        banner.classList.remove('cb-visible');
+      });
+    })();
+
+    /* ---- Parallax hero image (desktop only) ---- */
+    const heroImg = document.querySelector('.hero-img');
+    const heroSec = document.getElementById('hero');
+    if (heroImg && heroSec && window.matchMedia('(min-width: 1060px)').matches) {
+      window.addEventListener('scroll', () => {
+        const sy = window.scrollY;
+        if (sy < heroSec.offsetHeight) {
+          heroImg.style.transform = `translateY(${-sy * 0.12}px)`;
+        }
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+</html>

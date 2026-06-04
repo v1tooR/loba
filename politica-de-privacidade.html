@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — LOBA</title>
+  <meta name="description" content="Política de privacidade e uso de cookies da LOBA — Vistoria Técnica e Laudos Imobiliários em Taubaté e Vale do Paraíba.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logoloba.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logoloba.png">
+  <link rel="apple-touch-icon" href="assets/logoloba.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black:       #070707;
+      --dark-1:      #0d0d0d;
+      --dark-2:      #131313;
+      --dark-3:      #1a1a1a;
+      --dark-4:      #222222;
+      --surface:     #1e1e1e;
+
+      --gold-light:  #e5cc84;
+      --gold:        #c9a447;
+      --gold-dark:   #9e7e2e;
+      --gold-muted:  #6b531a;
+
+      --cream:       #f0ead6;
+      --off-white:   #e2dbc9;
+      --text-1:      #d4cdbf;
+      --text-2:      #8e8679;
+      --text-3:      #52493e;
+
+      --border:      rgba(201,164,71,.14);
+      --border-s:    rgba(201,164,71,.07);
+
+      --serif:  'Instrument Serif', Georgia, serif;
+      --sans:   'Manrope', sans-serif;
+
+      --ease:   cubic-bezier(.25,.46,.45,.94);
+      --t:      .35s;
+      --tf:     .2s;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--text-1);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    /* ---- Header ---- */
+    .header {
+      position: sticky; top: 0; z-index: 900;
+      border-bottom: 1px solid transparent;
+      padding: 1.25rem 0;
+      transition: background .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s;
+    }
+    .header.scrolled {
+      background: rgba(7,7,7,.88);
+      border-color: var(--border);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo-img { height: 58px; width: auto; display: block; object-fit: contain; }
+
+    /* ---- Page header ---- */
+    .page-hero {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .label {
+      font-size: .6875rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .gold-line { width: 44px; height: 1px; background: var(--gold); margin: 1.25rem 0; }
+    .page-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--cream);
+      margin-bottom: .75rem;
+    }
+    .page-date { font-size: .8125rem; color: var(--text-3); letter-spacing: .05em; }
+
+    /* ---- Content ---- */
+    .content {
+      padding: 4rem 0 6rem;
+    }
+    .content-inner {
+      max-width: 780px;
+    }
+
+    .policy-section { margin-bottom: 3rem; }
+    .policy-section:last-child { margin-bottom: 0; }
+
+    .policy-section h2 {
+      font-size: 1.375rem;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border-s);
+    }
+    .policy-section h3 {
+      font-family: var(--sans);
+      font-size: .875rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold);
+      margin: 1.5rem 0 .625rem;
+    }
+    .policy-section p {
+      font-size: .9375rem;
+      color: var(--text-2);
+      line-height: 1.78;
+      margin-bottom: .875rem;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section ul {
+      list-style: none;
+      margin: .625rem 0 .875rem;
+    }
+    .policy-section ul li {
+      font-size: .9375rem;
+      color: var(--text-2);
+      line-height: 1.72;
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: .375rem;
+    }
+    .policy-section ul li::before {
+      content: '';
+      position: absolute; left: 0; top: .65em;
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .policy-section a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color var(--tf);
+    }
+    .policy-section a:hover { color: var(--gold-light); }
+
+    .highlight-box {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+    .highlight-box p {
+      font-size: .875rem;
+      color: var(--text-2);
+      margin-bottom: 0;
+    }
+
+    /* ---- Back link ---- */
+    .back-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .8125rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gold);
+      transition: gap .2s var(--ease), color .2s;
+      margin-bottom: 2.5rem;
+    }
+    .back-link svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform .2s var(--ease); }
+    .back-link:hover { color: var(--gold-light); gap: .75rem; }
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    /* ---- Footer ---- */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+    .footer-bottom {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: .75rem;
+    }
+    .footer-copy { font-size: .75rem; color: var(--text-3); letter-spacing: .05em; }
+    .footer-loc {
+      font-size: .75rem; color: var(--text-3);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .footer-loc::before { content: '◆'; color: var(--gold); font-size: .4rem; }
+
+    /* ---- Cookie banner ---- */
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      padding: 1.125rem clamp(1.25rem, 4vw, 3rem);
+      z-index: 9998;
+      transform: translateY(110%);
+      transition: transform .55s var(--ease);
+      box-shadow: 0 -8px 40px rgba(0,0,0,.55);
+    }
+    .cookie-banner.cb-visible { transform: translateY(0); }
+    .cookie-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .cookie-text { flex: 1; min-width: 220px; }
+    .cookie-text p { font-size: .8125rem; color: var(--text-2); line-height: 1.55; }
+    .cookie-text a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+    .cookie-actions { display: flex; gap: .625rem; flex-shrink: 0; }
+    .btn-cookie-refuse {
+      display: inline-flex; align-items: center;
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .6rem 1.1rem;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text-2); cursor: pointer;
+      transition: all var(--tf) var(--ease);
+    }
+    .btn-cookie-refuse:hover { border-color: var(--text-2); color: var(--text-1); }
+    .btn-cookie-accept {
+      display: inline-flex; align-items: center;
+      font-family: var(--sans); font-size: .75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .6rem 1.25rem;
+      background: var(--gold); color: var(--black);
+      border: 1px solid var(--gold); cursor: pointer;
+      transition: all var(--tf) var(--ease);
+    }
+    .btn-cookie-accept:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    @media (max-width: 480px) {
+      .cookie-actions { width: 100%; }
+      .btn-cookie-refuse, .btn-cookie-accept { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ============================================= -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="LOBA — Voltar ao site">
+          <img src="assets/logoloba.png" alt="LOBA" class="logo-img">
+        </a>
+        <a href="index.html" class="back-link" style="margin-bottom:0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===== PAGE HERO ========================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="label">Legal</span>
+      <div class="gold-line"></div>
+      <h1 class="page-title">Política de Privacidade</h1>
+      <p class="page-date">Última atualização: junho de 2026</p>
+    </div>
+  </section>
+
+
+  <!-- ===== CONTENT ============================================ -->
+  <main class="content">
+    <div class="container">
+      <div class="content-inner">
+
+        <div class="policy-section">
+          <p>
+            A LOBA — Vistoria Técnica, Laudos Imobiliários e Manutenção Premium
+            ("LOBA", "nós" ou "nosso") valoriza a privacidade de seus clientes e visitantes.
+            Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e
+            protegemos suas informações pessoais, em conformidade com a
+            <strong style="color:var(--text-1);">Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.
+          </p>
+          <p>
+            Ao utilizar nosso site ou nos contatar por qualquer canal, você concorda com as
+            práticas descritas neste documento. Se tiver dúvidas, entre em contato pelo
+            <!-- EDITÁVEL: Substitua pelo e-mail real -->
+            <a href="mailto:contato@loba.com.br">contato@loba.com.br</a>.
+          </p>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>1. Dados coletados</h2>
+          <p>Coletamos apenas os dados estritamente necessários para prestar nossos serviços e responder às suas solicitações.</p>
+
+          <h3>1.1 Dados fornecidos por você</h3>
+          <ul>
+            <li>Nome e sobrenome</li>
+            <li>Número de telefone / WhatsApp</li>
+            <li>Endereço de e-mail</li>
+            <li>Informações sobre o imóvel (endereço, tipo, finalidade)</li>
+            <li>Conteúdo das mensagens enviadas via WhatsApp ou formulário de contato</li>
+          </ul>
+
+          <h3>1.2 Dados coletados automaticamente</h3>
+          <ul>
+            <li>Endereço IP e dados de navegação (via cookies de análise, se aceitos)</li>
+            <li>Tipo e versão do navegador</li>
+            <li>Páginas visitadas e tempo de permanência</li>
+            <li>Dispositivo e sistema operacional</li>
+          </ul>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>2. Como usamos seus dados</h2>
+          <p>Utilizamos suas informações para as seguintes finalidades:</p>
+          <ul>
+            <li>Responder às suas solicitações de orçamento ou agendamento de vistoria</li>
+            <li>Enviar laudos técnicos e relatórios contratados</li>
+            <li>Comunicação sobre o andamento do serviço prestado</li>
+            <li>Melhorar a experiência de navegação no nosso site</li>
+            <li>Cumprir obrigações legais e regulatórias</li>
+          </ul>
+          <div class="highlight-box">
+            <p>
+              A LOBA <strong>não vende, não aluga e não compartilha</strong> suas informações
+              pessoais com terceiros para fins comerciais. Os dados são utilizados exclusivamente
+              para a prestação dos serviços contratados ou solicitados.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>3. Base legal para tratamento</h2>
+          <p>O tratamento dos seus dados pessoais se fundamenta nas seguintes bases legais previstas na LGPD (art. 7º):</p>
+          <ul>
+            <li><strong style="color:var(--text-1);">Execução de contrato</strong> — quando você solicita uma vistoria, laudo ou serviço de manutenção</li>
+            <li><strong style="color:var(--text-1);">Consentimento</strong> — para o uso de cookies de análise e comunicações de marketing</li>
+            <li><strong style="color:var(--text-1);">Interesse legítimo</strong> — para melhoria dos nossos serviços e site</li>
+            <li><strong style="color:var(--text-1);">Cumprimento de obrigação legal</strong> — quando exigido por lei ou autoridade competente</li>
+          </ul>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>4. Cookies</h2>
+          <p>
+            Nosso site utiliza cookies — pequenos arquivos de texto armazenados no seu
+            navegador — para garantir o funcionamento adequado da página e, se você aceitar,
+            para análise de uso.
+          </p>
+
+          <h3>Cookies essenciais</h3>
+          <p>
+            Necessários para o funcionamento básico do site (ex.: armazenar sua preferência de
+            cookies). Não podem ser desativados. Não coletam dados pessoais identificáveis.
+          </p>
+
+          <h3>Cookies de análise (opcionais)</h3>
+          <p>
+            Permitem entender como os visitantes interagem com o site, quais páginas são mais
+            acessadas e como chegam até nós. Ativados somente com o seu consentimento explícito
+            por meio do banner de cookies.
+          </p>
+
+          <h3>Como gerenciar cookies</h3>
+          <p>
+            Você pode recusar cookies de análise clicando em "Recusar" no banner exibido ao
+            acessar o site. Também pode limpar cookies já armazenados pelas configurações do
+            seu navegador. A recusa de cookies opcionais não prejudica o acesso ao site.
+          </p>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>5. Armazenamento e segurança</h2>
+          <p>
+            Seus dados são armazenados em ambiente seguro e protegido por medidas técnicas e
+            organizacionais adequadas. O acesso é restrito aos colaboradores da LOBA que
+            precisam dessas informações para prestar o serviço solicitado.
+          </p>
+          <p>
+            Mantemos seus dados pelo tempo necessário para a prestação do serviço e, quando
+            aplicável, pelo prazo legal exigido. Após esse período, os dados são descartados
+            de forma segura.
+          </p>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>6. Compartilhamento de dados</h2>
+          <p>
+            Não compartilhamos seus dados com terceiros, exceto quando necessário para:
+          </p>
+          <ul>
+            <li>Prestação do serviço contratado (ex.: vistoristas parceiros sob confidencialidade)</li>
+            <li>Cumprimento de determinação judicial ou obrigação legal</li>
+            <li>Ferramentas de hospedagem e infraestrutura do site, que atuam como operadores sob contrato</li>
+          </ul>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>7. Seus direitos</h2>
+          <p>
+            Em conformidade com a LGPD, você tem os seguintes direitos em relação aos seus
+            dados pessoais:
+          </p>
+          <ul>
+            <li><strong style="color:var(--text-1);">Acesso</strong> — solicitar confirmação e cópia dos dados que temos sobre você</li>
+            <li><strong style="color:var(--text-1);">Correção</strong> — solicitar a correção de dados incompletos, inexatos ou desatualizados</li>
+            <li><strong style="color:var(--text-1);">Exclusão</strong> — solicitar a eliminação dos dados tratados com base em consentimento</li>
+            <li><strong style="color:var(--text-1);">Portabilidade</strong> — receber seus dados em formato estruturado e interoperável</li>
+            <li><strong style="color:var(--text-1);">Revogação de consentimento</strong> — retirar o consentimento a qualquer momento</li>
+            <li><strong style="color:var(--text-1);">Oposição</strong> — se opor ao tratamento realizado com fundamento em interesse legítimo</li>
+          </ul>
+          <p>
+            Para exercer qualquer desses direitos, entre em contato pelo e-mail
+            <!-- EDITÁVEL: Substitua pelo e-mail real -->
+            <a href="mailto:contato@loba.com.br">contato@loba.com.br</a>.
+            Responderemos em até 15 dias úteis.
+          </p>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>8. Links externos</h2>
+          <p>
+            Nosso site pode conter links para plataformas de terceiros (ex.: WhatsApp, Google
+            Maps). A LOBA não se responsabiliza pelas práticas de privacidade dessas
+            plataformas. Recomendamos a leitura das políticas de privacidade de cada serviço
+            antes de compartilhar seus dados.
+          </p>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>9. Contato e encarregado de dados (DPO)</h2>
+          <p>
+            Para questões relacionadas a privacidade, proteção de dados ou exercício dos seus
+            direitos, entre em contato:
+          </p>
+          <ul>
+            <!-- EDITÁVEL: Substitua pelos dados reais -->
+            <li>E-mail: <a href="mailto:contato@loba.com.br">contato@loba.com.br</a></li>
+            <li>WhatsApp: <a href="https://wa.me/5512999999999" target="_blank" rel="noopener">(12) 99999-9999</a></li>
+            <li>Localização: Taubaté, SP — Vale do Paraíba</li>
+          </ul>
+        </div>
+
+
+        <div class="policy-section">
+          <h2>10. Atualizações desta política</h2>
+          <p>
+            Esta Política de Privacidade pode ser atualizada periodicamente para refletir
+            mudanças em nossas práticas ou na legislação vigente. A data da última atualização
+            está indicada no topo desta página. Alterações significativas serão comunicadas
+            por meio de aviso no site.
+          </p>
+        </div>
+
+
+        <a href="index.html" class="back-link" style="margin-top:3rem;display:inline-flex;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+          Voltar ao site
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ===== FOOTER ============================================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LOBA. Todos os direitos reservados.</p>
+        <p class="footer-loc">Taubaté e Vale do Paraíba, SP</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===== COOKIE BANNER ====================================== -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <p>
+          Utilizamos cookies para melhorar sua experiência de navegação.
+          Ao continuar, você concorda com nossa
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
+          e com o uso de cookies.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-refuse" class="btn-cookie-refuse">Recusar</button>
+        <button id="cookie-accept" class="btn-cookie-accept">Aceitar cookies</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    /* ---- Header sticky ---- */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ---- Cookie consent ---- */
+    (function () {
+      const KEY = 'loba_cookie_consent';
+      if (localStorage.getItem(KEY)) return;
+      const banner = document.getElementById('cookie-banner');
+      setTimeout(() => banner.classList.add('cb-visible'), 900);
+      document.getElementById('cookie-accept').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'accepted');
+        banner.classList.remove('cb-visible');
+      });
+      document.getElementById('cookie-refuse').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'refused');
+        banner.classList.remove('cb-visible');
+      });
+    })();
+  </script>
+
+</body>
+</html>
