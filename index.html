@@ -291,6 +291,17 @@
     }
     .nav a:hover { color: var(--gold-light); }
     .nav a:hover::after { width: 100%; }
+    .nav-insta {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      transition: border-color var(--tf), color var(--tf);
+      flex-shrink: 0;
+    }
+    .nav-insta svg { width: 15px; height: 15px; }
+    .nav-insta:hover { border-color: var(--gold); color: var(--gold); }
+
     .nav-btn {
       font-size: .75rem !important;
       font-weight: 500 !important;
@@ -598,6 +609,124 @@
     }
 
     /* ============================================================
+       MARIDO DE ALUGUEL
+    ============================================================ */
+    #marido {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+    }
+    .marido-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    /* Image side */
+    .marido-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .marido-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, transparent 55%, var(--dark-2) 100%);
+      pointer-events: none;
+    }
+    .marido-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      transition: transform .9s var(--ease);
+    }
+    .marido-img-wrap:hover .marido-img { transform: scale(1.03); }
+    .marido-tag {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      z-index: 2;
+      background: rgba(7,7,7,.9);
+      border: 1px solid var(--border);
+      padding: .875rem 1.25rem;
+    }
+    .marido-tag-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .marido-tag-label {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      display: block;
+      margin-top: .25rem;
+    }
+
+    /* Content side */
+    .marido-h2 {
+      font-size: clamp(1.875rem, 3vw, 2.875rem);
+      color: var(--cream);
+      margin-bottom: 1.125rem;
+    }
+    .marido-h2 em { color: var(--gold); font-style: italic; }
+    .marido-desc {
+      color: var(--text-2);
+      line-height: 1.78;
+      margin-bottom: 2.25rem;
+      font-size: 1rem;
+      max-width: 480px;
+    }
+
+    .marido-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-bottom: 2.5rem;
+    }
+    .marido-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border-s);
+      padding: 1.125rem 1.125rem 1.25rem;
+      transition: border-color var(--tf) var(--ease), background var(--tf);
+    }
+    .marido-card:hover { border-color: var(--border); background: var(--dark-4); }
+    .marido-card-ico {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(201,164,71,.08);
+      border: 1px solid rgba(201,164,71,.18);
+      margin-bottom: .875rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .marido-card-ico svg { width: 15px; height: 15px; }
+    .marido-card h4 {
+      font-family: var(--sans);
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: .375rem;
+    }
+    .marido-card p {
+      font-size: .8125rem;
+      color: var(--text-2);
+      line-height: 1.62;
+    }
+
+    @media (max-width: 1060px) {
+      .marido-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .marido-img { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 560px) {
+      .marido-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
        NÚMEROS
     ============================================================ */
     #numeros {
@@ -867,6 +996,93 @@
     }
 
     /* ============================================================
+       INSTAGRAM STRIP
+    ============================================================ */
+    .insta-strip {
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .insta-strip::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(201,164,71,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .insta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .insta-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .insta-ico {
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--dark-4);
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: background var(--tf) var(--ease), border-color var(--tf);
+    }
+    .insta-ico svg { width: 22px; height: 22px; }
+    .insta-eyebrow {
+      font-size: .625rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--text-3);
+      display: block; margin-bottom: .25rem;
+    }
+    .insta-handle {
+      font-family: var(--serif);
+      font-size: clamp(1.375rem, 2.5vw, 2rem);
+      color: var(--cream);
+      font-style: italic;
+      line-height: 1;
+    }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: .75rem 1.5rem;
+      transition: all var(--tf) var(--ease);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .insta-link svg { width: 13px; height: 13px; transition: transform .22s var(--ease); }
+    .insta-link:hover {
+      background: rgba(201,164,71,.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .insta-link:hover svg { transform: translateX(4px); }
+
+    /* Social in footer */
+    .footer-social { display: flex; gap: .625rem; margin-top: 1.25rem; }
+    .footer-soc-ico {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border-s);
+      color: var(--text-2);
+      transition: border-color var(--tf), color var(--tf);
+    }
+    .footer-soc-ico svg { width: 14px; height: 14px; }
+    .footer-soc-ico:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ============================================================
        FOOTER
     ============================================================ */
     footer {
@@ -1078,9 +1294,19 @@
 
         <nav class="nav" aria-label="Menu principal">
           <a href="#servicos">Serviços</a>
+          <a href="#marido">Marido de Aluguel</a>
           <a href="#diferenciais">Diferenciais</a>
           <a href="#regioes">Regiões</a>
           <a href="#contato">Contato</a>
+          <a href="https://www.instagram.com/lobavistorias"
+             class="nav-insta" target="_blank" rel="noopener"
+             aria-label="Instagram @lobavistorias">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
           <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
           <a href="https://wa.me/5512976030294?text=Olá,%20gostaria%20de%20solicitar%20uma%20avaliação."
              class="nav-btn" target="_blank" rel="noopener">WhatsApp</a>
@@ -1097,6 +1323,7 @@
 
   <nav class="mob-menu" id="mobMenu" aria-label="Menu mobile">
     <a href="#servicos"      class="mn">Serviços</a>
+    <a href="#marido"        class="mn">Marido de Aluguel</a>
     <a href="#diferenciais"  class="mn">Diferenciais</a>
     <a href="#regioes"       class="mn">Regiões</a>
     <a href="#contato"       class="mn">Contato</a>
@@ -1300,7 +1527,7 @@
             <p>Documentação técnica com validade jurídica e clareza pericial. Laudos elaborados com metodologia rigorosa, referências normativas e linguagem que protege todas as partes.</p>
             <ul class="servico-feats">
               <li>Validade técnico-legal</li>
-              <li>Referências ABNT e NBR</li>
+              <li>Referências ABNT</li>
               <li>Evidências fotográficas indexadas</li>
               <li>Linguagem clara e precisa</li>
             </ul>
@@ -1345,6 +1572,90 @@
             <a href="https://wa.me/5512976030294?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20Manutenção%20Premium."
                class="btn btn-ghost" target="_blank" rel="noopener">
               Solicitar manutenção &nbsp;→
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== MARIDO DE ALUGUEL ================================== -->
+  <section id="marido" class="section">
+    <div class="container">
+      <div class="marido-inner">
+
+        <!-- Imagem -->
+        <div class="marido-img-wrap reveal">
+          <img
+            src="assets/marido.webp"
+            alt="Profissional LOBA realizando reparo residencial"
+            class="marido-img"
+            loading="lazy"
+          >
+          <div class="marido-tag">
+            <span class="marido-tag-num">4</span>
+            <span class="marido-tag-label">tipos de serviço</span>
+          </div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div>
+          <span class="label reveal">Marido de Aluguel</span>
+          <div class="gold-line reveal d1"></div>
+          <h2 class="marido-h2 reveal d1">
+            Praticidade e confiança<br>
+            <em>para o seu lar</em>
+          </h2>
+          <p class="marido-desc reveal d2">
+            Sabe aquela lista de pequenos reparos que só vai acumulando?
+            Nós resolvemos tudo com rapidez, limpeza e a segurança que a
+            marca LOBA já oferece — seja para a sua casa, apartamento ou escritório.
+          </p>
+
+          <div class="marido-grid">
+
+            <div class="marido-card reveal d1">
+              <div class="marido-card-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h4>Reparos Elétricos</h4>
+              <p>Troca de chuveiros, tomadas, interruptores, instalação de luminárias e ventiladores de teto.</p>
+            </div>
+
+            <div class="marido-card reveal d2">
+              <div class="marido-card-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+              </div>
+              <h4>Reparos Hidráulicos</h4>
+              <p>Conserto de vazamentos, troca de torneiras, reparos em descargas e sifões.</p>
+            </div>
+
+            <div class="marido-card reveal d3">
+              <div class="marido-card-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h4>Instalações em Geral</h4>
+              <p>Fixação de cortinas, persianas, quadros, espelhos, prateleiras e suportes de TV.</p>
+            </div>
+
+            <div class="marido-card reveal d4">
+              <div class="marido-card-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+              </div>
+              <h4>Montagem e Ajustes</h4>
+              <p>Pequenos reparos em móveis, portas arrastando e ajustes que fazem toda a diferença.</p>
+            </div>
+
+          </div>
+
+          <div class="reveal d2">
+            <!-- EDITÁVEL: Substitua o número pelo número real da LOBA -->
+            <a href="https://wa.me/5512999999999?text=Olá,%20gostaria%20de%20solicitar%20o%20serviço%20de%20Marido%20de%20Aluguel."
+               class="btn btn-gold" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+              Chamar o Marido de Aluguel
             </a>
           </div>
         </div>
@@ -1665,6 +1976,38 @@
   </section>
 
 
+  <!-- ===== INSTAGRAM STRIP =================================== -->
+  <div class="insta-strip">
+    <div class="container">
+      <div class="insta-inner">
+
+        <div class="insta-left">
+          <div class="insta-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <span class="insta-eyebrow">Siga-nos no Instagram</span>
+            <span class="insta-handle">@lobavistorias</span>
+          </div>
+        </div>
+
+        <a href="https://www.instagram.com/lobavistorias"
+           class="insta-link"
+           target="_blank" rel="noopener"
+           aria-label="Ver perfil da LOBA no Instagram">
+          Ver perfil
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+
   <!-- ===== FOOTER ============================================= -->
   <footer>
     <div class="container">
@@ -1680,6 +2023,26 @@
             Vistoria técnica, laudos imobiliários e manutenção de alto padrão para imóveis
             residenciais e comerciais em Taubaté e Vale do Paraíba.
           </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/lobavistorias"
+               class="footer-soc-ico"
+               target="_blank" rel="noopener"
+               aria-label="Instagram da LOBA (@lobavistorias)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/5512999999999"
+               class="footer-soc-ico"
+               target="_blank" rel="noopener"
+               aria-label="WhatsApp da LOBA">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.12 1.525 5.856L0 24l6.283-1.496A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.215-3.727.887.924-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div class="footer-col">
@@ -1708,6 +2071,7 @@
         <p class="footer-copy">© 2026 LOBA. Todos os direitos reservados.</p>
         <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
           <a href="politica-de-privacidade.html" class="footer-copy" style="transition:color var(--tf);text-decoration:underline;text-underline-offset:3px;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color=''">Política de Privacidade</a>
+          <p class="footer-copy">CNPJ: 67.009.471/0001-31</p>
           <p class="footer-loc">Taubaté e Vale do Paraíba, SP</p>
         </div>
       </div>
